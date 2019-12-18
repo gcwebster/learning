@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radio button test</title>
+</head>
+
+<body>
+    <h1>Select a colour</h1>
+    <form>
+        <input type="radio" name="colours" value="red" id="red">Red
+        <input type="radio" name="colours" value="blue" id="blue">Blue
+        <input type="radio" name="colours" value="green" id="green">Green
+    </form>
+
+    <script>
+        let colours = ['red', 'blue', 'green'];
+        let radioRight = ['blue', 'green', 'red'];
+        let radioLeft = ['green', 'red', 'blue'];
+
+        colours.map((item, index) => {
+            let element = document.getElementById(item);
+            element.addEventListener('keydown', function (event) {
+                if (event.keyCode == 39) {
+                    event.preventDefault();
+                    selectNextRadioButton(radioRight[index]);
+                }
+                if (event.keyCode == 37) {
+                    event.preventDefault();
+                    selectNextRadioButton(radioLeft[index]);
+                }
+            });
+        })
+
+        function selectNextRadioButton(nextRadioButton) {
+            document.getElementById(nextRadioButton).focus();
+        }
+    </script>
+</body>
+
+</html>
